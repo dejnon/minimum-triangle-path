@@ -4,7 +4,11 @@ object MinimumTrianglePath {
   }
 
   def solve(triangle: Array[Array[Int]]): Int = {
-    if(triangle.length == 1) return triangle(0)(0)
-    return triangle(0)(0) + Math.min(triangle(1)(0), triangle(1)(1))
+    val upperNode = triangle(0)(0)
+    if(triangle.length == 1) return upperNode
+
+    val leftNode  = triangle(1)(0)
+    val rightNode = triangle(1)(1)
+    return upperNode + Math.min(leftNode, rightNode)
   }
 }
