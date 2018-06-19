@@ -5,10 +5,11 @@ object MinimumTrianglePath {
 
   def solve(triangle: Array[Array[Int]]): Int = {
     triangle.reduceRight((upperLevel, lowerLevel) => {
-      upperLevel.zipWithIndex.map{
-        case (upperNode, node) => {
-          val leftNode  = lowerLevel(node)
-          val rightNode = lowerLevel(node+1)
+      val  leftNodes = lowerLevel
+      val rightNodes = lowerLevel.tail
+      val lowerNodes = leftNodes.zip(rightNodes)
+      upperLevel.zip(lowerNodes).map {
+        case (upperNode, (leftNode, rightNode)) => {
           upperNode + Math.min(leftNode, rightNode)
         }
       }
