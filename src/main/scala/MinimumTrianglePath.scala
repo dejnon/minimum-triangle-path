@@ -4,6 +4,7 @@ object MinimumTrianglePath {
   }
 
   def solve(triangle: Array[Array[Int]]): Int = {
-    return triangle(0)(0)
+    if(triangle.length == 1) return triangle(0)(0)
+    return triangle(0)(0) + Math.min(triangle(1)(0), triangle(1)(1))
   }
 }

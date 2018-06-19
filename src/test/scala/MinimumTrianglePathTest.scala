@@ -11,4 +11,11 @@ class MinimumTrianglePathTest extends org.scalatest.FunSuite {
     )
     assert(MinimumTrianglePath.solve(triangle) === 1)
   }
+  test("Minimum path for triangle with 2 levels") {
+    val triangle = Array(
+      Array( 2 ),
+      Array(2,1)
+    )
+    assert(MinimumTrianglePath.solve(triangle) === 3)
+  }
 }
