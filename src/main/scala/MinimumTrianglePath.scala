@@ -1,6 +1,14 @@
+import io.Source.stdin
+
 object MinimumTrianglePath {
   def main(args: Array[String]) {
-    println("Hello Supr!")
+    val triangle = stdin.
+      getLines().
+      map(_.
+        split(" ").
+        map(_.toInt)).
+      toArray
+    println(solve(triangle))
   }
 
   def solve(triangle: Array[Array[Int]]): Int = {
