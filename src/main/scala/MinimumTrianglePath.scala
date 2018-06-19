@@ -4,11 +4,18 @@ object MinimumTrianglePath {
   }
 
   def solve(triangle: Array[Array[Int]]): Int = {
-    val upperNode = triangle(0)(0)
-    if(triangle.length == 1) return upperNode
+    val sums = triangle.map(_.clone)
 
-    val leftNode  = triangle(1)(0)
-    val rightNode = triangle(1)(1)
-    return upperNode + Math.min(leftNode, rightNode)
+    for( level <- (1 until triangle.length).reverse){
+      for( node <- (0 until (triangle(level).length - 1))){
+        val upperNode = sums(level-1)(node)
+        val leftNode  = sums(level)(node)
+        val rightNode = sums(level)(node+1)
+
+        sums(level-1)(node) = upperNode + Math.min(leftNode, rightNode)
+      }
+    }
+
+    return sums(0)(0)
   }
 }
